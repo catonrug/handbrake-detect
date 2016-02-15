@@ -219,7 +219,7 @@ if [ ! -f "/home/pi/client_secrets.json" ]
 		fi
 fi
 
-name=$(echo "Handbrake")
+name=$(echo "HandBrake")
 site=$(echo "https://handbrake.fr/downloads.php")
 
 #download some information about site
