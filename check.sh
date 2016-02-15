@@ -281,7 +281,7 @@ version=$(pestr $tmp/$name.exe | grep -m1 -A1 "ProductVersion" | grep -v "Produc
 echo
 
 echo "$version" | grep "^[0-9]\+[\., ]\+[0-9]\+[\., ]\+[0-9]\+"
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
 
 echo creating md5 checksum of file..
 md5=$(md5sum $tmp/$filename | sed "s/\s.*//g")
@@ -319,7 +319,7 @@ echo
 
 else
 #version do not match version pattern
-echo downloaded file size is to small
+echo version do not match version pattern
 emails=$(cat ../maintenance | sed '$aend of file')
 printf %s "$emails" | while IFS= read -r onemail
 do {
