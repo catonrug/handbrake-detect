@@ -307,11 +307,18 @@ echo Make sure you have created \"$appname\" directory inside it!
 echo
 fi
 
+echo $filename | grep "i686" > /dev/null
+if [ $? -eq 0 ]; then
+bit=$(echo "(32-bit)")
+else
+bit=$(echo "(64-bit)")
+fi
+
 #lets send emails to all people in "posting" file
 emails=$(cat ../posting | sed '$aend of file')
 printf %s "$emails" | while IFS= read -r onemail
 do {
-python ../send-email.py "$onemail" "$filename" "$url 
+python ../send-email.py "$onemail" "$name $version $bit" "$url 
 https://9bd14dcf5a14ca8c7f7d8bcd02adc5916034be53.googledrive.com/host/0B_3uBwg3RcdVVUtFWENJWUxYNEE/$filename 
 $md5
 $sha1"
