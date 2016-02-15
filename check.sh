@@ -259,7 +259,7 @@ url=$(grep -A99 "^Resolving" $tmp/output.log | sed "s/http/\nhttp/g" | sed "s/ex
 filename=$(echo $url | sed "s/^.*\///g")
 
 #check if this filename is in database
-grep "$filename" $db > /dev/null
+grep "$filename" $db
 if [ $? -ne 0 ]; then
 
 echo new version detected!
