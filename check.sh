@@ -276,8 +276,11 @@ echo extracting installer..
 7z x $tmp/$filename -y -o$tmp > /dev/null
 echo
 
+customname=$(find $tmp -maxdepth 1 -iname *`echo $name`.exe* | sed "s/^.*\///g") 
+echo $customname
+
 echo detecting version
-version=$(pestr $tmp/$name.exe | grep -m1 -A1 "ProductVersion" | grep -v "ProductVersion" | sed "s/\.[0-9]\+//3")
+version=$(pestr $tmp/$customname | grep -m1 -A1 "ProductVersion" | grep -v "ProductVersion" | sed "s/\.[0-9]\+//3")
 echo
 
 echo "$version" | grep "^[0-9]\+[\., ]\+[0-9]\+[\., ]\+[0-9]\+"
