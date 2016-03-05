@@ -159,7 +159,7 @@ if [ ! -f "/home/pi/client_secrets.json" ]
 			else
 				#list all python installed modules
 				#check if google-api-python-client is really installed
-				pip freeze | grep "google-api-python-client" > /dev/null
+				/usr/local/bin/pip freeze | grep "google-api-python-client" > /dev/null
 				if [ $? -ne 0 ]
 					then
 						echo google-api-python-client python module not installed. Please run:
@@ -167,7 +167,7 @@ if [ ! -f "/home/pi/client_secrets.json" ]
 						return
 				fi
 				#chech again if all necesary modules are installed to work with google uploder then download upload script:
-				pip freeze | grep "google-api-python-client" > /dev/null
+				/usr/local/bin/pip freeze | grep "google-api-python-client" > /dev/null
 				if [ $? -eq 0 ]
 					then
 						#if every necessary software and module is installed then download uploader script and sample config file
